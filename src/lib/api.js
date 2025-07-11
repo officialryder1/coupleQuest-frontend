@@ -11,7 +11,7 @@ export async function fetchAPI(endpoint, method = 'GET', body = null) {
     ...(token && { 'Authorization': `Bearer ${token}` }),
   };
 
-  const response = await fetch(`${API_URL}/api/${endpoint}`, {
+  const response = await fetch(`${API_URL}/${endpoint}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : null,
