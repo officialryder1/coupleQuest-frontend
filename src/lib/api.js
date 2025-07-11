@@ -1,6 +1,7 @@
 import { goto } from '$app/navigation';
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 
 export async function fetchAPI(endpoint, method = 'GET', body = null) {
@@ -10,7 +11,7 @@ export async function fetchAPI(endpoint, method = 'GET', body = null) {
     ...(token && { 'Authorization': `Bearer ${token}` }),
   };
 
-  const response = await fetch(`${API_URL}/${endpoint}`, {
+  const response = await fetch(`${API_URL}/api/${endpoint}`, {
     method,
     headers,
     body: body ? JSON.stringify(body) : null,
