@@ -4,13 +4,15 @@
 
   let isPaired = false;
   export let showTitle = true
+  let page = 'pairing'
 
   onMount(async () => {
     const status = await checkPairingStatus();
     isPaired = status.is_paired;
+    if(window.location.pathname == '/pairing'){
+      page = 'confirm' 
+    }
 
-    
-    console.log(window.location.pathname)
   });
 
 </script>
@@ -32,11 +34,8 @@
         + Create New Task
         </a>
       {:else}
-        <a href="/pairing" class="btn btn-sm btn-primary">
+        <a href="/{page}" class="btn btn-sm btn-primary">
           Start Pairing
-        </a>
-        <a href="/confirm" class="btn btn-sm btn-info text-white">
-          Confirm Pairing
         </a>
       {/if}
     </div>

@@ -132,6 +132,11 @@
           </div>
         {/if}
 
+        <div>
+          
+          <p class="text-sm tracking-tight"> To confirm partner code <a href="/confirm" class="text-orange-300 font-bold">click here</a></p>
+        </div>
+
         <button 
           on:click={generateCode}
           class="btn btn-primary w-full"
