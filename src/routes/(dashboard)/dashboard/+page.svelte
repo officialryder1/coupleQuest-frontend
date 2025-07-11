@@ -4,7 +4,7 @@
   import confetti from 'canvas-confetti';
   import { fetchAPI } from '$lib/api';
   import { checkPairingStatus } from '$lib/pairing';
-  import Achievements from '$lib/components/achievements.svelte';
+  import Achievements from '$lib/components/Achievements.svelte';
   import { couplePusher, disconnectPusher } from '$lib/pusher';
   
   

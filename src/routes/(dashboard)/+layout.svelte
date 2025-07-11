@@ -2,8 +2,8 @@
 	import '../../app.css';
 	import { onMount } from 'svelte';
 	import { requirePairedUser } from '$lib/pairing';
-	import Nav from '$lib/components/nav.svelte';
-	import FooterNav from '$lib/components/footerNav.svelte';
+	import Nav from '$lib/components/Nav.svelte';
+	import FooterNav from '$lib/components/FooterNav.svelte';
 
 	onMount(async () => {
 		// Protect all routes except pairing pages

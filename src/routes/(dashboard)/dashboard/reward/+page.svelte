@@ -1,5 +1,5 @@
 <script>
-    import RewardAchievementForm from "$lib/components/rewardAchievementForm.svelte";
+    import RewardAchievementForm from "$lib/components/RewardAchievementForm.svelte";
 </script>
 
 

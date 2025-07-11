@@ -4,7 +4,7 @@
   import TestimonialCarousel from '$lib/components/TestimonialCarousel.svelte';
   import AnimatedHeart from '$lib/components/AnimatedHeart.svelte';
 	import { goto } from '$app/navigation';
-  import Download from "$lib/components/download.svelte"
+  import Download from "$lib/components/Download.svelte"
   
 
 
