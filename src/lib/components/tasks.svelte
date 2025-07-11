@@ -43,7 +43,6 @@
     await loadTasks();
   })
 </script>
-
       <!-- Tasks Section -->
       <div class="mb-12">
          <h2 class="text-xl font-bold text-white flex items-center gap-2">
