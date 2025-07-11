@@ -1,53 +1,76 @@
 <script>
-    import { fetchAPI } from "$lib/api";
+  import { fetchAPI } from "$lib/api";
 
-    let email = '';
-    let password = '';
-    let username = '';
-    let error = '';
+  let email = '';
+  let username = '';
+  let password = '';
+  let error = '';
+  let showPassword = false;
 
-    async function handleRegister() {
-        try {
-        const data = await fetchAPI('user/register/', 'POST', { email, username, password });
-        window.location.href = '/login'; // Redirect on success
-        } catch (err) {
-        error = 'Invalid email or password';
-        }
+  async function handleRegister() {
+    try {
+      const data = await fetchAPI('user/register/', 'POST', { email, username, password });
+      window.location.href = '/login';
+    } catch (err) {
+      error = 'Registration failed. Please check your details.';
     }
+  }
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-purple-100 to-blue-50 flex items-center justify-center">
-  <div class="card w-96 bg-base-100 shadow-xl">
-    <div class="card-body">
-      <h2 class="card-title text-2xl font-bold mb-4">CoupleQuest Register</h2>
-      {#if error}
-        <div class="alert alert-error">{error}</div>
-      {/if}
-      <input 
-        type="email" 
-        bind:value={email} 
-        placeholder="Email" 
-        class="input input-bordered w-full mb-4 border-secondary text-secondary" 
-      />
-      <input 
-        type="text" 
-        bind:value={username} 
-        placeholder="username" 
-        class="input input-bordered w-full mb-4 border-secondary text-secondary" 
-      />
-      <input 
-        type="password" 
-        bind:value={password} 
-        placeholder="Password" 
-        class="input input-bordered w-full mb-6 border-secondary text-secondary" 
-      />
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-200 to-blue-100">
+  <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl border border-gray-200">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
+
+    {#if error}
+      <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 text-sm">{error}</div>
+    {/if}
+
+    <div class="space-y-5">
+      <div class="relative">
+        <input
+          type="email"
+          bind:value={email}
+          placeholder="Email"
+          class="input input-bordered w-full pl-12"
+        />
+        <span class="absolute left-4 top-3 text-gray-400">📧</span>
+      </div>
+
+      <div class="relative">
+        <input
+          type="text"
+          bind:value={username}
+          placeholder="Username"
+          class="input input-bordered w-full pl-12"
+        />
+        <span class="absolute left-4 top-3 text-gray-400">👤</span>
+      </div>
+
+      <div class="relative">
+        <input
+          type={showPassword ? 'text' : 'password'}
+          bind:value={password}
+          placeholder="Password"
+          class="input input-bordered w-full pl-12 pr-12"
+        />
+        <span class="absolute left-4 top-3 text-gray-400">🔒</span>
+        <button
+          type="button"
+          class="absolute right-3 top-2 text-sm text-gray-50 hover:text-gray-200"
+          on:click={() => (showPassword = !showPassword)}
+        >
+          {showPassword ? 'Hide' : 'Show'}
+        </button>
+      </div>
+
       <button on:click={handleRegister} class="btn btn-secondary w-full">
         Register
       </button>
 
-      <div>
-        <p class="p-1 font-bold">Already have an account? <a href="/login" class="text-secondary font-bold">login</a></p>
-      </div>
+      <p class="text-center text-sm text-gray-600">
+        Already have an account?
+        <a href="/login" class="text-secondary font-medium hover:underline">Login</a>
+      </p>
     </div>
   </div>
 </div>
