@@ -1,8 +1,6 @@
-import adapter from '@sveltejs/adapter-cloudflare'
+import adapter from '@sveltejs/adapter-vercel'
 
 
-const config = { kit: { adapter: adapter() }, prerender: {
-    handleHttpError: 'warn' // or 'ignore'
-  } };
+const config = { kit: { adapter: adapter() },};
 
 export default config;
