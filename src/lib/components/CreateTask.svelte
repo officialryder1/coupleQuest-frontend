@@ -1,6 +1,6 @@
 <script>
   import { fetchAPI } from '$lib/api';
-  import DatePicker from './datePicker.svelte';
+  import DatePicker from './DatePicker.svelte';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { couplePusher } from '$lib/pusher';
