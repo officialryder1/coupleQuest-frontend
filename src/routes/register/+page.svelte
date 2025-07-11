@@ -5,15 +5,20 @@
   let username = '';
   let password = '';
   let error = '';
+  let loading = false
   let showPassword = false;
 
   async function handleRegister() {
+    loading = true;
+    error = ''
     try {
       const data = await fetchAPI('user/register/', 'POST', { email, username, password });
       window.location.href = '/login';
     } catch (err) {
       error = 'Registration failed. Please check your details.';
-    }
+    } finally {
+			loading = false;
+		}
   }
 </script>
 
@@ -63,9 +68,13 @@
         </button>
       </div>
 
-      <button on:click={handleRegister} class="btn btn-secondary w-full">
-        Register
-      </button>
+      <button class="btn btn-secondary w-full flex justify-center" on:click={handleLogin} disabled={loading}>
+				{#if loading}
+					<span class="loading loading-spinner"></span>
+				{:else}
+					register
+				{/if}
+			</button>
 
       <p class="text-center text-sm text-gray-600">
         Already have an account?

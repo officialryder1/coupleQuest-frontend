@@ -3,16 +3,21 @@
   let email = '';
   let password = '';
   let error = '';
+  let loading = false
   let showPassword = false;
 
   async function handleLogin() {
+    loading = true;
+    let error = ''
     try {
       const data = await fetchAPI('user/login/', 'POST', { email, password });
       localStorage.setItem('access_token', data.access);
       window.location.href = '/dashboard';
     } catch (err) {
       error = 'Invalid email or password';
-    }
+    } finally {
+			loading = false;
+		}
   }
 </script>
 
@@ -56,9 +61,13 @@
         </button>
       </div>
 
-      <button class="btn btn-secondary w-full" on:click={handleLogin}>
-        Login
-      </button>
+      <button class="btn btn-secondary w-full flex justify-center" on:click={handleLogin} disabled={loading}>
+				{#if loading}
+					<span class="loading loading-spinner"></span>
+				{:else}
+					Login
+				{/if}
+			</button>
 
       <p class="text-center text-sm text-gray-600">
         Don't have an account?
