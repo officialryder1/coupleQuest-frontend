@@ -95,7 +95,7 @@
           fetchAPI('task/'),
           fetchAPI('user/stats/'),
           fetchAPI('reward/'),
-          fetchAPI('/user/me')
+          fetchAPI('user/me')
         ]);
         
         tasks = tasksRes;
