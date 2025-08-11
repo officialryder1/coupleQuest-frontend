@@ -1,9 +1,8 @@
 <script>
-  import { fade, fly } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import FeatureCard from '$lib/components/FeatureCard.svelte';
   import TestimonialCarousel from '$lib/components/TestimonialCarousel.svelte';
   import AnimatedHeart from '$lib/components/AnimatedHeart.svelte';
-	import { goto } from '$app/navigation';
   import Download from "$lib/components/Download.svelte"
   
 
@@ -63,12 +62,12 @@
         Turn everyday moments into adventures. Complete challenges, earn rewards, and grow closer—one quest at a time.
       </p>
       <div class="flex gap-4">
-        <button class="btn btn-primary btn-lg glow-on-hover" on:click={() => goto('/register')}>
+        <a href="/register" class="btn btn-primary btn-lg glow-on-hover">
           Get Started
-        </button>
-        <button class="btn btn-outline btn-secondary btn-lg" on:click={() => goto('/dashboard')}>
+        </a>
+        <a href="/dashboard" class="btn btn-outline btn-secondary btn-lg">
           How It Works →
-        </button>
+        </a>
         <Download/>
       </div>
     </div>

@@ -68,7 +68,7 @@
         </button>
       </div>
 
-      <button class="btn btn-secondary w-full flex justify-center" on:click={handleLogin} disabled={loading}>
+      <button class="btn btn-secondary w-full flex justify-center" on:click={handleRegister} disabled={loading}>
 				{#if loading}
 					<span class="loading loading-spinner"></span>
 				{:else}
