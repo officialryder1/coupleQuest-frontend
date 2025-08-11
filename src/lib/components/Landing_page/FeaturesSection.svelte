@@ -42,7 +42,7 @@
     ];
 </script>
 
-<section class="py-24 bg-[#f8f5fe]">
+<section class="py-24 bg-[#f8f5fe]"  id="features">
   <div class="container mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-4xl lg:text-5xl font-bold text-foreground mb-4">

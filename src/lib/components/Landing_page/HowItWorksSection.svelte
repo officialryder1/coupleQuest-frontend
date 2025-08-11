@@ -35,7 +35,7 @@
     ];
 </script>
 
-<section class="py-24 bg-[#f5f3fa]">
+<section class="py-24 bg-[#f5f3fa]" id="how-it-works">
 	<div class="container mx-auto px-6">
 		<!-- Header -->
 		<div class="text-center mb-16">

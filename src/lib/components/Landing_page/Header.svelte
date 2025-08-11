@@ -7,8 +7,8 @@
   const navigation = [
     { name: "Features", href: "#features" },
     { name: "How it Works", href: "#how-it-works" },
-    { name: "Leaderboard", href: "#leaderboard" },
-    { name: "Community", href: "#community" },
+    { name: "Leaderboard", href: "/leaderboard" },
+    { name: "Community", href: "/community" },
   ];
 
   function toggleMenu() {

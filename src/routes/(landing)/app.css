@@ -131,13 +131,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  .step-card {
-    @apply h-full bg-gradient-card border-border/50 hover:shadow-card transition-all duration-300 group;
-  }
-
-  .step-icon {
-    @apply w-16 h-16 rounded-2xl mx-auto flex items-center justify-center group-hover:scale-110 transition-transform duration-300;
-  }
 }
 
 @layer utilities {
