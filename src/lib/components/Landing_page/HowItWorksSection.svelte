@@ -84,7 +84,7 @@
 
 		<!-- CTA Button -->
 		<div class="text-center">
-			<Button variant="hero" size="xl" class="group">
+			<Button variant="hero" size="xl" class="group" href="/register">
 				Start Your Adventure Today
 				<Star class="w-5 h-5 group-hover:scale-110 transition-transform" />
 			</Button>

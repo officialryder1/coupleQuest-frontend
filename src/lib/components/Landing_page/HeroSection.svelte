@@ -38,11 +38,11 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-          <Button variant="hero" size="xl" class="group">
+          <Button variant="hero" size="xl" class="group" href="/register">
             Start Your Quest
             <Zap class="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
-          <Button variant="gaming" size="xl" class="group">
+          <Button variant="gaming" size="xl" class="group" href="/leaderboard">
             View Leaderboard
             <Trophy class="w-5 h-5 group-hover:scale-110 transition-transform" />
           </Button>
