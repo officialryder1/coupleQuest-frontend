@@ -1,8 +1,8 @@
 import { goto } from '$app/navigation';
 
-// const API_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 
-const API_URL = "http://localhost:8000/api"
+// const API_URL = "http://localhost:8000/api"
 
 export async function fetchAPI(endpoint, method = 'GET', body = null) {
   const token = localStorage.getItem('access_token');
