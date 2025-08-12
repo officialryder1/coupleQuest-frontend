@@ -1,0 +1,26 @@
+{
+    "name": "CoupleQuest",
+    "short_name": "CoupleQuest",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F592A1",
+    "theme_color": "#ff3f20",
+    "description": "We build fast, secure, and scalable web applications tailored to your business goals. From portfolio websites to robust platforms, our development team delivers with precision",
+    "icons": [
+        {
+            "src":"pwa-64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "pwa-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "pwa-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
