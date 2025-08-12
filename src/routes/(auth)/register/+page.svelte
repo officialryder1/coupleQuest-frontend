@@ -1,21 +1,30 @@
 <script>
   import { fetchAPI } from "$lib/api";
+  
 
-  let email = '';
-  let username = '';
-  let password = '';
-  let error = '';
-  let loading = false
-  let showPassword = false;
+  let email = $state('');
+  let username = $state('');
+  let password = $state('');
+  let error = $state('');
+  let loading = $state(false)
+  let showPassword = $state(false)
 
   async function handleRegister() {
+    if (!email.trim()) return
+
     loading = true;
-    error = ''
+   
     try {
       const data = await fetchAPI('user/register/', 'POST', { email, username, password });
-      window.location.href = '/login';
+      console.log(data)
+      if(data?.email) {
+        error = data?.email
+        console.log(error)
+      } else {
+          window.location.href = '/login';
+      }
     } catch (err) {
-      error = 'Registration failed. Please check your details.';
+      error = 'Server error, Please try again later';
     } finally {
 			loading = false;
 		}
@@ -23,7 +32,7 @@
 </script>
 
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-200 to-blue-100">
-  <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl border border-gray-200">
+  <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-2xl border border-gray-200 text-white">
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
 
     {#if error}
@@ -36,7 +45,7 @@
           type="email"
           bind:value={email}
           placeholder="Email"
-          class="input input-bordered w-full pl-12"
+          class="input input-bordered w-full pl-12 "
         />
         <span class="absolute left-4 top-3 text-gray-400">📧</span>
       </div>
@@ -46,7 +55,7 @@
           type="text"
           bind:value={username}
           placeholder="Username"
-          class="input input-bordered w-full pl-12"
+          class="input input-bordered w-full pl-12 "
         />
         <span class="absolute left-4 top-3 text-gray-400">👤</span>
       </div>

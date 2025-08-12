@@ -1,24 +1,33 @@
 <script>
   import { fetchAPI } from "$lib/api";
-  let email = '';
-  let password = '';
-  let error = '';
-  let loading = false
-  let showPassword = false;
+  let email = $state('');
+  let password = $state('');
+  let error = $state('');
+  let loading = $state(false)
+  let showPassword = $state(false);
 
   async function handleLogin() {
+    if(!email.trim()) return
+
     loading = true;
-    let error = ''
     try {
       const data = await fetchAPI('user/login/', 'POST', { email, password });
-      localStorage.setItem('access_token', data.access);
-      window.location.href = '/dashboard';
+      console.log(data)
+      if (data?.refresh) {
+        localStorage.setItem('access_token', data.access);
+        window.location.href = '/dashboard';
+      }
+      if (data?.detail) {
+        error = data?.detail
+      }
+      
     } catch (err) {
-      error = 'Invalid email or password';
+      error = 'Server error, please try again later';
     } finally {
 			loading = false;
 		}
   }
+
 </script>
 
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-200 to-blue-100">
@@ -26,7 +35,7 @@
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
 
     {#if error}
-      <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 text-sm">{error}</div>
+      <div class="alert alert-error m-5">{error}</div>
     {/if}
 
     <div class="space-y-5">
@@ -35,7 +44,7 @@
           type="email"
           bind:value={email}
           placeholder="Email"
-          class="input input-bordered w-full pl-12"
+          class="input input-bordered w-full pl-12 text-white"
         />
         <span class="absolute left-4 top-3 text-gray-400">
           📧
@@ -47,7 +56,7 @@
           type={showPassword ? 'text' : 'password'}
           bind:value={password}
           placeholder="Password"
-          class="input input-bordered w-full pl-12 pr-12"
+          class="input input-bordered w-full pl-12 pr-12 text-white"
         />
         <span class="absolute left-4 top-3 text-gray-400">
           🔒

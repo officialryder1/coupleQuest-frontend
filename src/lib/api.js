@@ -18,7 +18,7 @@ export async function fetchAPI(endpoint, method = 'GET', body = null) {
   });
 
   if (response.status === 401) {
-    goto('/'); // Redirect if unauthorized
+    goto('/login'); // Redirect if unauthorized
   }
 
   return await response.json();
