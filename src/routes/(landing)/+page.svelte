@@ -7,8 +7,10 @@
     import HowItWorksSection from "$lib/components/Landing_page/HowItWorksSection.svelte";
 </script>
 
+<main in:fade={{duration:300}}>
 <Header />
 <HeroSection />
 <FeaturesSection />
 <HowItWorksSection />
 <CTASections />
+</main>

@@ -1,6 +1,7 @@
 <script>
   import { Button } from "$lib/components/ui/button";
   import { Heart, Menu, X } from "@lucide/svelte";
+  import { fade } from "svelte/transition"
 
   let isMenuOpen = false;
 
@@ -70,7 +71,7 @@
 
     <!-- Mobile Menu -->
     {#if isMenuOpen}
-      <div class="md:hidden py-6 border-t border-border/50">
+      <div class="md:hidden py-6 border-t border-border/50" transition:fade={{duration:300}}>
         <nav class="flex flex-col gap-4 mb-6">
           {#each navigation as item}
             <a
