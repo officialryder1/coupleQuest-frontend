@@ -1,6 +1,8 @@
 <script>
 	import './app.css';
 	import { onMount } from 'svelte';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
 	onMount(() => {
 		// Smooth scroll for anchor links
@@ -14,6 +16,8 @@
 		});
   	});
 	let { children } = $props();
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 <svelte:head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +29,7 @@
 
 <div class="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 font-sans text-gray-100">
   {@render children()}
+ 
 </div>
 
 <style>
