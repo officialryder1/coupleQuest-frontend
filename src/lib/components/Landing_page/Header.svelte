@@ -87,7 +87,7 @@
           <Button variant="ghost" class="text-foreground hover:text-primary">
             Login
           </Button>
-          <Button variant="custom">
+          <Button variant="custom" href="/register">
             Get Started
           </Button>
         </div>
