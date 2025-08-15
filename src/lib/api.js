@@ -5,7 +5,24 @@ const API_URL = import.meta.env.VITE_BACKEND_URL;
 // const API_URL = "http://localhost:8000/api"
 
 export async function fetchAPI(endpoint, method = 'GET', body = null) {
-  const token = localStorage.getItem('access_token');
+  let token = null;
+
+  if (typeof document !== 'undefined') {
+    const cookies = document.cookie.split(';').map(c => c.trim());
+    
+    for (const cookie of cookies) {
+      const [name, ...rest] = cookie.split('=');
+      if (name === 'access_token') {
+        token = rest.join('=');
+        break;
+      }
+    }
+
+    if (!token) {
+      console.warn('No access_token found in document.cookie');
+    }
+  }
+
   const headers = {
     'Content-Type': 'application/json',
     ...(token && { 'Authorization': `Bearer ${token}` }),
@@ -15,10 +32,11 @@ export async function fetchAPI(endpoint, method = 'GET', body = null) {
     method,
     headers,
     body: body ? JSON.stringify(body) : null,
+    credentials: 'include', // sends cookies if needed
   });
 
-  if (response.status === 401) {
-    goto('/login'); // Redirect if unauthorized
+  if (response.status === 401 && typeof window !== 'undefined') {
+    goto('/login');
   }
 
   return await response.json();

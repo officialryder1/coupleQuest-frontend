@@ -101,6 +101,7 @@
         tasks = tasksRes;
         stats = statsRes;
         rewards = rewardsRes;
+        user = await userRes
       }
     } catch (error) {
       console.error("Failed to load dashboard data:", error);
