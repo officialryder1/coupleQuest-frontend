@@ -1,10 +1,11 @@
 <script>
-  let { form } = $props()
+  import { fetchAPI } from '$lib/api';
+
 
   let email = $state('');
   let username = $state('');
   let password = $state('');
-  let error = $state(form?.error)
+  let error = $state('')
   let loading = $state(false)
   let showPassword = $state(false)
 
@@ -16,8 +17,8 @@
     try {
       const data = await fetchAPI('user/register/', 'POST', { email, username, password });
       console.log(data)
-      if(data?.email) {
-        error = data?.email
+      if(data?.errors) {
+        error = data?.errors.email
         console.log(error)
       } else {
           window.location.href = '/login';
@@ -38,12 +39,11 @@
       <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4 text-sm">{error}</div>
     {/if}
 
-    <form method="POST">x
+ 
     <div class="space-y-5">
       <div class="relative">
         <input
           type="email"
-          name="email"
           bind:value={email}
           placeholder="Email"
           class="input input-bordered w-full pl-12 "
@@ -54,7 +54,6 @@
       <div class="relative">
         <input
           type="text"
-          name="username"
           bind:value={username}
           placeholder="Username"
           class="input input-bordered w-full pl-12 "
@@ -65,7 +64,6 @@
       <div class="relative">
         <input
           type={showPassword ? 'text' : 'password'}
-          name="password"
           bind:value={password}
           placeholder="Password"
           class="input input-bordered w-full pl-12 pr-12"
@@ -80,7 +78,7 @@
         </button>
       </div>
 
-      <button class="btn btn-secondary w-full flex justify-center" disabled={loading}>
+      <button onclick={handleRegister} class="btn btn-secondary w-full flex justify-center" disabled={loading}>
 				{#if loading}
 					<span class="loading loading-spinner"></span>
 				{:else}
@@ -93,6 +91,5 @@
         <a href="/login" class="text-secondary font-medium hover:underline">Login</a>
       </p>
     </div>
-  </form>
   </div>
 </div>

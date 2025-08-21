@@ -32,7 +32,6 @@ export async function fetchAPI(endpoint, method = 'GET', body = null) {
     method,
     headers,
     body: body ? JSON.stringify(body) : null,
-    credentials: 'include', // sends cookies if needed
   });
 
   if (response.status === 401 && typeof window !== 'undefined') {
